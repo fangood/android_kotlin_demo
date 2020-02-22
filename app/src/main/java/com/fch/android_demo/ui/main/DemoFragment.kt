@@ -8,21 +8,30 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.fch.android_demo.R
+import com.fch.android_demo.recyclerview.CustomAdapter
 
 /**
  * A placeholder fragment containing a simple view.
  */
-class PlaceholderFragment : Fragment() {
+class DemoFragment : Fragment() {
 
+    private lateinit var dataSet:Array<String>
+    private lateinit var recyclerView:RecyclerView
     private lateinit var pageViewModel: PageViewModel
+    private lateinit var layoutManager:RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         pageViewModel = ViewModelProviders.of(this).get(PageViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
+        initDataset()
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,11 +39,19 @@ class PlaceholderFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_main, container, false)
         val textView: TextView = root.findViewById(R.id.section_label)
-        pageViewModel.text.observe(this, Observer<String> {
+        recyclerView = root.findViewById(R.id.recyclerView)
+        layoutManager = LinearLayoutManager(activity)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = CustomAdapter(dataSet)
+        pageViewModel.text.observe(viewLifecycleOwner, Observer<String> {
             textView.text = it
         })
         return root
     }
+    private fun initDataset() {
+        dataSet = arrayOf("1、ConstraintLayout")
+    }
+
 
     companion object {
         /**
@@ -48,8 +65,8 @@ class PlaceholderFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): PlaceholderFragment {
-            return PlaceholderFragment().apply {
+        fun newInstance(sectionNumber: Int): DemoFragment {
+            return DemoFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }

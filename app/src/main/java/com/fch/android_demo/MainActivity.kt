@@ -8,6 +8,9 @@ import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import com.fch.android_demo.ui.main.SectionsPagerAdapter
 
+/**
+ * 入口
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':demo_module', ':utils_module', ':module_base'
 rootProject.name='android_kotlin_demo'
