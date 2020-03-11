@@ -2,6 +2,9 @@ package com.fch.android_demo
 
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
+
 
 class MyApplication:Application() {
 
@@ -12,5 +15,7 @@ class MyApplication:Application() {
             ARouter.openDebug()   // Turn on debugging mode (If you are running in InstantRun mode, you must turn on debug mode! Online version needs to be closed, otherwise there is a security risk)
         }
         ARouter.init(this)
+
+        Logger.addLogAdapter(AndroidLogAdapter())
     }
 }

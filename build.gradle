@@ -5,7 +5,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
     }
     dependencies {
         classpath "com.alibaba:arouter-register:1.0.2"
@@ -20,7 +20,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
     }
 }
 
@@ -41,8 +41,8 @@ ext.versions = [
                 'api'     : '1.4.1',
                 'compiler': '1.2.1',
         ],
-
-
+        'rxjava3'            :'3.0.0',
+        'rxandroid'          :'3.0.0',
         'targetCompatibility': JavaVersion.VERSION_1_8,
         'sourceCompatibility': JavaVersion.VERSION_1_8
 ]

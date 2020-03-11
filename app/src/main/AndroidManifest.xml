@@ -23,6 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".dispatch.DispatchActivity">
+
+        </activity>
+        <activity android:name=".intent.AActivity">
+
+        </activity>
+        <activity android:name="intent.BActivity" />
     </application>
 
 </manifest>
